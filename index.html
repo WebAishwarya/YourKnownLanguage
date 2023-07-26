@@ -1,0 +1,83 @@
+<html>
+
+<head>
+
+	<title> Languages You Know </title>
+
+	<style>
+		* { font-size : 50px; }
+		body {       
+			background-image: url("im3.jpg"); 
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+		          }
+		h1 {border:dashed; color:black; }
+	</style>
+
+	<script>
+		function show()
+		{
+			event.preventDefault();
+			let name = document.getElementById("name");
+			let Java = document.getElementById("Java");
+			let JS = document.getElementById("JS");
+			let Python = document.getElementById("Python");
+			let ans= document.getElementById("ans");
+
+			if (name.value == "")
+			{
+				alert("Name is empty");
+				ans.innerHTML = " ";
+				name.focus();
+				return;
+			}
+
+			else if (name.value.trim() == "")
+			{
+				alert("Name cannot be spaces");
+				ans.innerHTML = " ";
+				name.value = " ";
+				name.focus();
+				return;	
+			}
+
+			else if (! name.value.match(/^[A-Za-z ]+$/))
+			{
+				alert("Name should contain only alphabeticals");
+				ans.innerHTML = " ";
+				name.value = " ";
+				name.focus();
+				return;
+			}
+
+			let languages = " ";
+			if (Java.checked)		languages = languages + "Java" + "<br>";
+			if (JS.checked)		languages = languages + "JavaScript" + "<br>";
+			if (Python.checked)		languages = languages + "Python";
+
+			let msg = " User Name = " + name.value +"<br>" + " Known Languages = " + languages + "<br>";
+			ans.innerHTML = msg;
+		}
+	</script>
+</head>
+
+<body>
+
+	<center>
+		<h1 style="background-color: pink;"> Languages You Know </h1>
+		<form onsubmit="show()">
+			<input type="text" placeholder="Enter your name" id="name" />
+			<br><br>
+			<input type="checkbox" id="Java" checked=true /> Java
+			<input type="checkbox" id="JS" /> JavaScript
+			<input type="checkbox" id="Python" /> Python
+			<br><br>
+			<input type="Submit" />
+		</form>
+
+		<h1 id="ans" style="background-color: pink;" />
+	</center>
+</body>
+
+</html>
